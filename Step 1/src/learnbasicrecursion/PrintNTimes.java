@@ -2,18 +2,15 @@ package learnbasicrecursion;
 
 public class PrintNTimes {
     public static void main(String[] args) {
-        System.out.println();
-
-        int count = 0;
+        int count = 10;
         printNumber(count);
     }
 
     public static void printNumber(int count) {
-        System.out.println(count);
-        if (count == 150) {
+        if (count == 0) {
             return;
         }
-        count++;
-        printNumber(count);
+        printNumber(count - 1);
+        System.out.print(count + " ");
     }
 }
