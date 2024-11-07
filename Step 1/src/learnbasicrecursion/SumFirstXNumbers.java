@@ -16,6 +16,7 @@ public class SumFirstXNumbers {
     }
 
     // method 2
+    @SuppressWarnings("unused")
     public static int sum(int n, int s) {
         if (n < 1) {
             return s;
