@@ -6,30 +6,29 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         int[] arr = {13, 46, 24, 52, 20, 9};
-        System.out.print(Arrays.toString(selectSort(arr)));
+        System.out.print("\n" + Arrays.toString(selectSort(arr)));
     }
 
     private static int[] selectSort(int[] arr) {
-        int swapped = 0;
-        for (int i = arr.length - 1; i > 0; i--) {
+        int swaps = 0;
 
-            swapped = compareAndSwap(arr, i, swapped);
-            if (swapped < 1) {
-                break;
-            }
-            System.out.println("runs");
+        for (int i = arr.length - 1; i > 0; i--) {
+            swaps = compareAndSwap(arr, i, swaps);
+            if (swaps < 1) break;
+
+            System.out.print("ran ");
         }
         return arr;
     }
 
-    private static int compareAndSwap(int[] arr, int i, int swapped) {
+    private static int compareAndSwap(int[] arr, int i, int swaps) {
         for (int j = 0; j < i; j++) {
             if (arr[j] > arr[j + 1]) {
                 swapElements(arr, j, j + 1);
-                swapped++;
+                swaps++;
             }
         }
-        return swapped;
+        return swaps;
     }
 
     private static void swapElements(int[] arr, int left, int right) {
