@@ -5,15 +5,14 @@ public class HashingNumbers {
 
         int[] arr = {1, 2, 1, 5, 12, 5, 5, 2};
         int digit = 1;
-        int maxLength = 20;
-        preHash(arr, digit, maxLength);
+        System.out.print(preHash(arr, digit));
     }
 
-    static void preHash(int[] arr, int digit, int maxLen) {
-        int[] hashArr = new int[(int) 1e8 + 1];
+    static int preHash(int[] arr, int digit) {
+        int[] hashArr = new int[(int) 1e3];
         for (int i : arr) {
-            hashArr[i] += 1;
+            hashArr[i]++;
         }
-        System.out.print(hashArr[digit]);
+        return hashArr[digit];
     }
 }

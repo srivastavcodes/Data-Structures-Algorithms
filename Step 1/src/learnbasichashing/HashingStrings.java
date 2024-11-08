@@ -16,7 +16,6 @@ public class HashingStrings {
         for (int i = 0; i < str.length(); i++) {
             hashArr[str.charAt(i)] += 1;
         }
-
         for (int i = 0; i < ch.length(); i++) {
             System.out.print(hashArr[ch.charAt(i)] + " ");
         }
