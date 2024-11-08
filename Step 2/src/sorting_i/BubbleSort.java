@@ -12,6 +12,7 @@ public class BubbleSort {
     private static int[] selectSort(int[] arr) {
         int swapped = 0;
         for (int i = arr.length - 1; i > 0; i--) {
+
             swapped = compareAndSwap(arr, i, swapped);
             if (swapped < 1) {
                 break;
