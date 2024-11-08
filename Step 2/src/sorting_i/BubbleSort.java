@@ -6,10 +6,10 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         int[] arr = {13, 46, 24, 52, 20, 9};
-        System.out.print("\n" + Arrays.toString(selectSort(arr)));
+        System.out.print("\n" + Arrays.toString(bubbleSort(arr)));
     }
 
-    private static int[] selectSort(int[] arr) {
+    private static int[] bubbleSort(int[] arr) {
         int swaps = 0;
 
         for (int i = arr.length - 1; i > 0; i--) {
