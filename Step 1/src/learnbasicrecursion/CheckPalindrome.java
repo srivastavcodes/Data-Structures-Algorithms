@@ -2,13 +2,15 @@ package learnbasicrecursion;
 
 public class CheckPalindrome {
     public static void main(String[] args) {
+        // Valid Palindrome (LeetCode)
 
-        String str = "madam";
+        String str = "0P";
         System.out.print(isPalindrome(str));
     }
 
     private static boolean isPalindrome(String str) {
-        return verifyPalindrome(str, 0, str.length());
+        String regStr = str.replaceAll("[^a-zA-Z0-9]", "");
+        return verifyPalindrome(regStr.toLowerCase(), 0, regStr.length());
     }
 
     private static boolean verifyPalindrome(String str, int i, int len) {
