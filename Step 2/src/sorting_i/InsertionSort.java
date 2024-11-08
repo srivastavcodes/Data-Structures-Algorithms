@@ -17,10 +17,10 @@ public class InsertionSort {
     }
 
     private static void compareAndSwap(int[] arr, int i) {
-        for (int j = i; j > 0; j--) {
-            if (arr[j - 1] > arr[j]) {
-                swapElements(arr, j - 1, j);
-            }
+        int j = i;
+        while (j > 0 && arr[j - 1] > arr[j]) {
+            swapElements(arr, j - 1, j);
+            j--;
         }
     }
 
