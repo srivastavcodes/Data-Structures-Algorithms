@@ -15,8 +15,6 @@ public class BubbleSort {
         for (int i = arr.length - 1; i > 0; i--) {
             swaps = compareAndSwap(arr, i, swaps);
             if (swaps < 1) break;
-
-            System.out.print("ran ");
         }
         return arr;
     }
