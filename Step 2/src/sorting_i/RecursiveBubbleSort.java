@@ -10,17 +10,14 @@ public class RecursiveBubbleSort {
         System.out.print(Arrays.toString(sortedArr));
     }
 
-    private static int[] bubbleSort(int[] arr, int l, int r) {
-        if (r <= 0) {
-            return arr;
+    private static int[] bubbleSort(int[] arr, int left, int right) {
+        if (right <= 0) return arr;
+
+        if (left < right) {
+            if (arr[left] > arr[left + 1]) swapElements(arr, left, left + 1);
+            bubbleSort(arr, left + 1, right);
         }
-        if (l < r) {
-            if (arr[l] > arr[l + 1]) {
-                swapElements(arr, l, l + 1);
-            }
-            bubbleSort(arr, l + 1, r);
-        }
-        return bubbleSort(arr, 0, r - 1);
+        return bubbleSort(arr, 0, right - 1);
     }
 
     private static void swapElements(int[] arr, int left, int right) {
