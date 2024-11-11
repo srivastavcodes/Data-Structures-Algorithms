@@ -1,13 +1,20 @@
 package Easy;
 
+import java.util.Arrays;
+
 public class FindSecondLargest {
     public static void main(String[] args) {
 
         int[] arr = {4, 7, 8, 5, 7, 6};
-        int secLargest = getSecondLargest(arr, arr.length - 1);
-        int secondLargest = secondLargestOptimal(arr, arr.length - 1);
-        int secSmallest = secondSmallestOptimal(arr, arr.length - 1);
-        System.out.print(secLargest + " " + secondLargest + " " + secSmallest);
+        int[] elmts = getSecondOrderElements(arr, arr.length - 1);
+        System.out.println(Arrays.toString(elmts));
+    }
+
+    private static int[] getSecondOrderElements(int[] arr, int len) {
+        int secLargest = secondLargestOptimal(arr, len);
+        int secSmallest = secondSmallestOptimal(arr, len);
+
+        return new int[] {secLargest, secSmallest};
     }
     
     private static int secondLargestOptimal(int[] arr, int len) {
@@ -40,6 +47,7 @@ public class FindSecondLargest {
         return secSmallest;
     }
 
+/*
     private static int getSecondLargest(int[] arr, int len) {
         int lar = arr[0];
         int secLar = -1;
@@ -55,6 +63,7 @@ public class FindSecondLargest {
         }
         return secLar;
     }
+*/
 }
 
 
