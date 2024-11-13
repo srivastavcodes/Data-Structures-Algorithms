@@ -1,4 +1,4 @@
-package Easy;
+package easy;
 
 public class LongestSubArrNatural {
     public static void main(String[] args) {

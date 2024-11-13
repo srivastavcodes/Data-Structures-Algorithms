@@ -1,4 +1,4 @@
-package Easy;
+package easy;
 
 public class FindSingleElement {
     public static void main(String[] args) {

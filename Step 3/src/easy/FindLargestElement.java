@@ -1,4 +1,4 @@
-package Easy;
+package easy;
 
 public class FindLargestElement {
     public static void main(String[] args) {

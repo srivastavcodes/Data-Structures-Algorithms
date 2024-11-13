@@ -1,4 +1,4 @@
-package Easy;
+package easy;
 
 public class MaxConsecutiveOne {
     public static void main(String[] args) {
