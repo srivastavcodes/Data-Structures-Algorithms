@@ -1,18 +1,21 @@
 package learnbasichashing;
 
+import java.util.Arrays;
+
 public class HashingNumbers {
     public static void main(String[] args) {
 
-        int[] arr = {1, 2, 1, 5, 12, 5, 5, 2};
-        int digit = 1;
-        System.out.print(preHash(arr, digit));
+        int[] arr = {8, 9};
+        frequencyCount(arr, arr.length);
+        System.out.println(Arrays.toString(arr));
     }
 
-    static int preHash(int[] arr, int digit) {
-        int[] hashArr = new int[(int) 1e3];
+    public static void frequencyCount(int[] arr, int N) {
+        int[] hashArr = new int[N];
         for (int i : arr) {
-            hashArr[i]++;
+            if (i > N) continue;
+            hashArr[i - 1]++;
         }
-        return hashArr[digit];
+        System.arraycopy(hashArr, 0, arr, 0, hashArr.length);
     }
 }
