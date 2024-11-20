@@ -1,4 +1,4 @@
-package medium;
+package theory.medium;
 
 public class MooresVotingAlgorithm {
     public static void main(String[] args) {

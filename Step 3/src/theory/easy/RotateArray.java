@@ -1,4 +1,4 @@
-package easy;
+package theory.easy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

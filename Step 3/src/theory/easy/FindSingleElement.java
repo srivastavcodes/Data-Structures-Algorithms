@@ -1,4 +1,4 @@
-package easy;
+package theory.easy;
 
 public class FindSingleElement {
     public static void main(String[] args) {

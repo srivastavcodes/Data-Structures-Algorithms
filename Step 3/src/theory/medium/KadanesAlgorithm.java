@@ -1,4 +1,4 @@
-package medium;
+package theory.medium;
 
 import java.util.Arrays;
 

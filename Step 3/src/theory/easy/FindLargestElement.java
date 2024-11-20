@@ -1,4 +1,4 @@
-package easy;
+package theory.easy;
 
 public class FindLargestElement {
     public static void main(String[] args) {
