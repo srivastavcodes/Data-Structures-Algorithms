@@ -1,4 +1,4 @@
-package revision.easy;
+package revision.medium;
 
 import java.util.ArrayList;
 
