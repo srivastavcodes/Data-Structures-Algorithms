@@ -14,14 +14,13 @@ public class LeetCodeMoveZerosToEnd {
     private static void moveZerosToEnd(int[] vals) {
         int k = 0;
         for (int i = 0; i < vals.length; i++) {
-            if (vals[i] != 0) {
-                if (i != k) {
-                    int temp = vals[i];
-                    vals[i] = vals[k];
-                    vals[k] = temp;
-                }
+            if (vals[k] == 0 && vals[i] != 0) {
+                int val = vals[k];
+                vals[k] = vals[i];
+                vals[i] = val;
                 k += 1;
             }
+            if (vals[k] != 0) k += 1;
         }
     }
 }
