@@ -13,6 +13,7 @@ public class GFGLongestSubarrWithSumK {
     }
 
     // For both positives and negatives
+    @SuppressWarnings("unused")
     private static int lenOfLongestSubarr(int[] vals, int k) {
         Map<Integer, Integer> preSum = new HashMap<>();
         int sum = 0, maxLen = 0;
