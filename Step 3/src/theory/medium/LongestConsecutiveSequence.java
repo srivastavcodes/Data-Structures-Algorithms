@@ -13,7 +13,7 @@ public class LongestConsecutiveSequence {
     }
 
     @SuppressWarnings("unused")
-    public static int longestSuccessiveElements(int[] vals) {
+    private static int longestSuccessiveElements(int[] vals) {
         int len = vals.length, longest = 1;
         if (len == 0) return 0;
         Set<Integer> values = new HashSet<>();
