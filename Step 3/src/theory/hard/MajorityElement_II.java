@@ -12,20 +12,22 @@ class MajorityElement_II {
         System.out.print(result);
     }
 
-//    public static List<Integer> majorityElement(int[] vals) {
-//        Map<Integer, Integer> intMap = new HashMap<>();
-//        List<Integer> intList = new ArrayList<>();
-//
-//        int len = vals.length, min = len / 3 + 1;
-//
-//        for (int i = 0; i < len; i++) {
-//            intMap.put(vals[i], intMap.getOrDefault(vals[i], 0) + 1);
-//
-//            if (intMap.get(vals[i]) == min) intList.add(vals[i]);
-//            if (intList.size() == 2) break;
-//        }
-//        return intList;
-//    }
+/*
+    public static List<Integer> majorityElement(int[] vals) {
+        Map<Integer, Integer> intMap = new HashMap<>();
+        List<Integer> intList = new ArrayList<>();
+
+        int len = vals.length, min = len / 3 + 1;
+
+        for (int i = 0; i < len; i++) {
+            intMap.put(vals[i], intMap.getOrDefault(vals[i], 0) + 1);
+
+            if (intMap.get(vals[i]) == min) intList.add(vals[i]);
+            if (intList.size() == 2) break;
+        }
+        return intList;
+    }
+*/
 
     public static List<Integer> majorityElement(int[] vals) {
         int count1 = 0, count2 = 0;
