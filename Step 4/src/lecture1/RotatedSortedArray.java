@@ -7,8 +7,11 @@ public class RotatedSortedArray {
     public static void main(String[] args) {
 
         ArrayList<Integer> vals = new ArrayList<>(Arrays.asList(12, 15, 18, 2, 4));
-        int len = vals.size(), k = 2;
+        int[] values = {6, 10, 1, 3, 5};
+        int len = vals.size(), k = 3;
+
         System.out.print(search(vals, len, k));
+        System.out.print("\n" + searchInARotatedSortedArrayII(values, k));
     }
 
     private static int search(ArrayList<Integer> vals, int len, int k) {
@@ -33,5 +36,34 @@ public class RotatedSortedArray {
             }
         }
         return -1;
+    }
+
+    public static boolean searchInARotatedSortedArrayII(int[] vals, int k) {
+        int low = 0, high = vals.length - 1;
+
+        while (low <= high) {
+            int centre = (low + high) / 2;
+            if (vals[centre] == k) return true;
+
+            if (vals[low] == vals[centre] && vals[high] == vals[centre]) {
+                high -= 1;
+                low += 1;
+                continue;
+            }
+            if (vals[low] <= vals[centre]) {
+                if (vals[low] <= k && k <= vals[centre]) {
+                    high = centre - 1;
+                } else {
+                    low = centre + 1;
+                }
+            } else {
+                if (vals[centre] <= k && k <= vals[high]) {
+                    low = centre + 1;
+                } else {
+                    high = centre - 1;
+                }
+            }
+        }
+        return false;
     }
 }
