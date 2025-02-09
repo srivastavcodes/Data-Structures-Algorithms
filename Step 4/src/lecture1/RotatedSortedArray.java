@@ -66,4 +66,36 @@ public class RotatedSortedArray {
         }
         return false;
     }
+
+    public static int findMin(int[] vals) {
+        int low = 0, high = vals.length - 1, result = Integer.MAX_VALUE;
+        int index = -1;
+
+        while (low <= high) {
+            int centre = (low + high) / 2;
+
+            if (vals[low] <= vals[high]) {
+                if (result > vals[low]) {
+                    index = low;
+                    result = vals[low];
+                }
+                break;
+            }
+
+            if (vals[low] <= vals[centre]) {
+                if (result > vals[low]) {
+                    index = low;
+                    result = vals[low];
+                }
+                low = centre + 1;
+            } else {
+                if (result > vals[centre]) {
+                    index = centre;
+                    result = vals[centre];
+                }
+                high = centre - 1;
+            }
+        }
+        return index;
+    }
 }
