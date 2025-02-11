@@ -2,7 +2,6 @@ package lecture2;
 
 public class SmallestDivisor {
     public static void main(String[] args) {
-
         int[] vals = {8, 4, 2, 3};
         int limit = 10;
         int output = smallestDivisor(vals, limit);
