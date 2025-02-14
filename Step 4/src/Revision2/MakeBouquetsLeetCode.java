@@ -17,8 +17,9 @@ public class MakeBouquetsLeetCode {
     }
 
     private static int minDays(int[] vals, int bouquets, int adjFlowers) {
+        long count = (long) bouquets * adjFlowers;
         int low = 1, high = findMax(vals);
-        if ((bouquets * adjFlowers) > vals.length) {
+        if (count > vals.length) {
             return -1;
         }
         while (low <= high) {
