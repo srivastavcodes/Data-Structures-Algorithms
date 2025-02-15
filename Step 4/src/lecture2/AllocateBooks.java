@@ -17,8 +17,8 @@ public class AllocateBooks {
         int low = Integer.MIN_VALUE, high = 0;
 
         for (Integer book : books) {
-            low = Math.max(low, book);
             high += book;
+            low = Math.max(low, book);
         }
         while (low <= high) {
             int center = (low + high) / 2;
