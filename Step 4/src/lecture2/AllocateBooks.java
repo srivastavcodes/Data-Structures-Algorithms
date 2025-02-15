@@ -16,9 +16,9 @@ public class AllocateBooks {
         if (students > len) return -1;
         int low = Integer.MIN_VALUE, high = 0;
 
-        for (int i = 0; i < books.size() - 1; i++) {
-            low = Math.max(low, books.get(i));
-            high += books.get(i);
+        for (Integer book : books) {
+            low = Math.max(low, book);
+            high += book;
         }
         while (low <= high) {
             int center = (low + high) / 2;
