@@ -1,4 +1,4 @@
-package revision1;
+package revision.revision1;
 
 public class FindPeakElementLeetCode {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package lecture2;
+package theory.lecture2;
 
 public class RoseGarden {
     public static void main(String[] args) {

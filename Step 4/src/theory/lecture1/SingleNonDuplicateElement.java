@@ -1,4 +1,4 @@
-package lecture1;
+package theory.lecture1;
 
 public class SingleNonDuplicateElement {
     public static void main(String[] args) {

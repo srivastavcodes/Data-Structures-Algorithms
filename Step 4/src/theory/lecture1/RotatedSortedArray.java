@@ -1,4 +1,4 @@
-package lecture1;
+package theory.lecture1;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
-package revision2;
+package theory.lecture2;
 
-public class KthPositiveLeetCode {
+public class KthPositiveInteger {
     public static void main(String[] args) {
         int[] vals = {2, 4, 5, 7};
         int length = vals.length;

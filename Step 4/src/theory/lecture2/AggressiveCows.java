@@ -1,4 +1,4 @@
-package lecture2;
+package theory.lecture2;
 
 import java.util.Arrays;
 
