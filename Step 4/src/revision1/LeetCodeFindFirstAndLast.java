@@ -1,4 +1,4 @@
-package Revision1;
+package revision1;
 
 import java.util.Arrays;
 

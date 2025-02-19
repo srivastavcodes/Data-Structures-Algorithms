@@ -1,4 +1,4 @@
-package Revision1;
+package revision1;
 
 public class LeetCodeRotatedSortedArray {
     public static void main(String[] args) {

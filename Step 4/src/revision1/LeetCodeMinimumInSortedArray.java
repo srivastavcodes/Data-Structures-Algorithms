@@ -1,4 +1,4 @@
-package Revision1;
+package revision1;
 
 public class LeetCodeMinimumInSortedArray {
     public static void main(String[] args) {

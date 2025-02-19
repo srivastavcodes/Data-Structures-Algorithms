@@ -1,4 +1,4 @@
-package Revision2;
+package revision2;
 
 public class MakeBouquetsLeetCode {
     public static void main(String[] args) {
