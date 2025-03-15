@@ -5,8 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func ConstructLL() *ListNode {
-	vals := []int{2, 3, 4, 5, 6, 7}
+func ConstructLL(vals []int) *ListNode {
 	head := &ListNode{Val: vals[0], Next: nil}
 	tail := head
 	for i := 1; i < len(vals); i++ {
@@ -24,4 +23,15 @@ func Length(node *ListNode) int {
 		lstNode = lstNode.Next
 	}
 	return count
+}
+
+func SearchInLinkedList(node *ListNode, val int) bool {
+	lstNode := node
+	for lstNode != nil {
+		if lstNode.Val == val {
+			return true
+		}
+		lstNode = lstNode.Next
+	}
+	return false
 }
