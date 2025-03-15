@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"go_linkedlist/lecture1"
+)
 
 func main() {
-	fmt.Printf("Linked List in Go\n")
+	ll := lecture1.ConstructLL()
+	fmt.Printf("%v", lecture1.Length(ll))
 }
