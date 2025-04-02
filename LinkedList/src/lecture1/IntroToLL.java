@@ -1,17 +1,8 @@
 package lecture1;
 
 public class IntroToLL {
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Node node = constructLL(arr);
-        node = removeKthNode(node, 8);
-        printList(node);
-        System.out.println();
-        node = removeElmnt(node, 2);
-        printList(node);
-    }
 
-    private static Node constructLL(int[] arr) {
+    public static Node constructLL(int[] arr) {
         Node head = new Node(arr[0]);
         Node tail = head;
         for (int i = 1; i < arr.length; i++) {
@@ -22,7 +13,7 @@ public class IntroToLL {
         return head;
     }
 
-    private static int length(Node head) {
+    public static int length(Node head) {
         Node temp = head;
         int count = 0;
         while (temp != null) {
@@ -32,28 +23,28 @@ public class IntroToLL {
         return count;
     }
 
-    private static int checkIfPresent(Node head, int val) {
+    public static int checkIfPresent(Node head, int val) {
         Node temp = head;
         while (temp != null) {
-            if (temp.data == val) return 1;
+            if (temp.value == val) return 1;
             temp = temp.next;
         }
         return 0;
     }
 
-    private static Node removesHead(Node node) {
+    public static Node removesHead(Node node) {
         if (node == null) return null;
         return node.next;
     }
 
-    private static void printList(Node node) {
+    public static void printList(Node node) {
         while (node != null) {
-            System.out.print(node.data + " ");
+            System.out.print(node.value + " ");
             node = node.next;
         }
     }
 
-    private static Node removeTail(Node node) {
+    public static Node removeTail(Node node) {
         if (node == null || node.next.next == null) return null;
         Node temp = node;
         while (temp.next.next != null) {
@@ -63,7 +54,7 @@ public class IntroToLL {
         return node;
     }
 
-    private static Node removeKthNode(Node node, int k) {
+    public static Node removeKthNode(Node node, int k) {
         if (node == null) return null;
         if (k == 1) return node.next;
         int count = 0;
@@ -81,13 +72,13 @@ public class IntroToLL {
         return node;
     }
 
-    private static Node removeElmnt(Node node, int k) {
+    public static Node removeElmnt(Node node, int k) {
         if (node == null) return null;
-        if (node.data == k) return node.next;
+        if (node.value == k) return node.next;
         Node temp = node;
         Node prev = null;
         while (temp != null) {
-            if (temp.data == k) {
+            if (temp.value == k) {
                 prev.next = prev.next.next;
                 break;
             }
@@ -95,25 +86,5 @@ public class IntroToLL {
             temp = temp.next;
         }
         return node;
-    }
-}
-
-class Node {
-    public int data;
-    public Node next;
-
-    public Node() {
-        this.data = 0;
-        this.next = null;
-    }
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-
-    public Node(int data, Node next) {
-        this.data = data;
-        this.next = next;
     }
 }
