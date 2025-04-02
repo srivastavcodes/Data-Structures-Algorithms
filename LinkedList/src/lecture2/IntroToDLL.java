@@ -84,4 +84,50 @@ public class IntroToDLL {
 
             node.next = node.prev = null;
       }
+
+      public Node insertBeforeHead(Node head, int val) {
+            Node newHead = new Node(null, val, head);
+            head.prev = newHead;
+            return newHead;
+      }
+
+      public Node insertBeforeTail(Node head, int val) {
+            if (head.next == null) return insertBeforeHead(head, val);
+            Node tail = head;
+            while (tail.next != null) {
+                  tail = tail.next;
+            }
+            Node back = tail.prev;
+            Node newTail = new Node(back, val, tail);
+            back.next = newTail;
+            tail.prev = newTail;
+            return head;
+      }
+
+      public Node insertBeforeKthIndex(Node head, int val, int index) {
+            if (index == 1) {
+                  return insertBeforeHead(head, val);
+            }
+            Node temp = head;
+            int count = 0;
+            while (temp.next != null) {
+                  count++;
+                  if (count == index) {
+                        break;
+                  }
+                  temp = temp.next;
+            }
+            Node back = temp.prev;
+            Node newNode = new Node(back, val, temp);
+            back.next = newNode;
+            temp.prev = newNode;
+            return head;
+      }
+
+      public void insertBeforeKthNode(Node node, int val) {
+            Node back = node.prev;
+            Node newNode = new Node(back, val, node);
+            back.next = newNode;
+            node.prev = newNode;
+      }
 }

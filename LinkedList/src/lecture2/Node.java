@@ -20,7 +20,7 @@ public class Node {
             this.next = null;
       }
 
-      public Node(Node prev, Node next, int value) {
+      public Node(Node prev, int value, Node next) {
             this.prev = prev;
             this.value = value;
             this.next = next;

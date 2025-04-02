@@ -17,5 +17,25 @@ public class Main {
 
             dll.deleteNode(afterDeletion.next);
             dll.printDLL(afterDeletion);
+
+            System.out.println();
+
+            Node afterHeadInsertion = dll.insertBeforeHead(afterDeletion, 0);
+            dll.printDLL(afterHeadInsertion);
+
+            System.out.println();
+
+            Node afterTailInsertion = dll.insertBeforeTail(afterHeadInsertion, 6);
+            dll.printDLL(afterTailInsertion);
+
+            System.out.println();
+
+            Node kthIndexInsertion = dll.insertBeforeKthIndex(afterTailInsertion, 11, 4);
+            dll.printDLL(kthIndexInsertion);
+
+            System.out.println();
+
+            dll.insertBeforeKthNode(kthIndexInsertion.next.next.next, 57);
+            dll.printDLL(kthIndexInsertion);
       }
 }
