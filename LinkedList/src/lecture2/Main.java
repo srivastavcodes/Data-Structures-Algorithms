@@ -37,5 +37,7 @@ public class Main {
 
             dll.insertBeforeKthNode(kthIndexInsertion.next.next.next, 57);
             dll.printDLL(kthIndexInsertion);
+
+            System.out.println();
       }
 }
