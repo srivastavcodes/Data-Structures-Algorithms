@@ -11,25 +11,20 @@ func CreateLinkedList(values []int) *ListNode {
 	if len(values) == 0 {
 		return nil
 	}
-
 	head := &ListNode{Val: values[0]}
 	current := head
-
 	for i := 1; i < len(values); i++ {
 		current.Next = &ListNode{Val: values[i]}
 		current = current.Next
 	}
-
 	return head
 }
 
-// PrintLinkedList prints all values in the linked list
 func PrintLinkedList(head *ListNode) {
 	if head == nil {
 		fmt.Println("Empty list")
 		return
 	}
-
 	current := head
 	for current != nil {
 		fmt.Printf("%d -> ", current.Val)
@@ -52,4 +47,11 @@ func main() {
 	deleteNode(list.Next.Next)
 	fmt.Printf("List after deletion:\n")
 	PrintLinkedList(list)
+
+	node := middleNode(list)
+	fmt.Printf("Middle linked list: %d", node.Val)
+
+	reversedList := reverseList(list)
+	fmt.Printf("\n")
+	PrintLinkedList(reversedList)
 }
