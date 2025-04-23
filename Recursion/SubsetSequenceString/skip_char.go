@@ -5,14 +5,6 @@ import (
 	"strings"
 )
 
-func main() {
-	skip('c', "", "baccdah")
-	result := skipReturn('a', "baaccdah")
-	skippedString := skipString("apple", "badappleiate")
-	fmt.Println(result)
-	fmt.Println(skippedString)
-}
-
 func skip(char uint8, p, up string) {
 	if len(up) == 0 {
 		fmt.Println(p)
