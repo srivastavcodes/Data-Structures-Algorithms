@@ -1,36 +1,52 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	skip("", "baccdah")
-	result := skipReturn("baaccdah")
+	skip('c', "", "baccdah")
+	result := skipReturn('a', "baaccdah")
+	skippedString := skipString("apple", "badappleiate")
 	fmt.Println(result)
+	fmt.Println(skippedString)
 }
 
-func skip(p, up string) {
+func skip(char uint8, p, up string) {
 	if len(up) == 0 {
 		fmt.Println(p)
 		return
 	}
 	ch := up[0]
 
-	if ch == 'a' {
-		skip(p, up[1:])
+	if ch == char {
+		skip(char, p, up[1:])
 	} else {
-		skip(p+string(ch), up[1:])
+		skip(char, p+string(ch), up[1:])
 	}
 }
 
-func skipReturn(up string) string {
+func skipReturn(char uint8, up string) string {
 	if len(up) == 0 {
 		return ""
 	}
 	ch := up[0]
 
-	if ch == 'a' {
-		return skipReturn(up[1:])
+	if ch == char {
+		return skipReturn(char, up[1:])
 	} else {
-		return string(ch) + skipReturn(up[1:])
+		return string(ch) + skipReturn(char, up[1:])
+	}
+}
+
+func skipString(value, str string) string {
+	if len(str) == 0 {
+		return ""
+	}
+	if strings.HasPrefix(str, value) {
+		return skipString(value, str[len(value):])
+	} else {
+		return string(str[0]) + skipString(value, str[1:])
 	}
 }
