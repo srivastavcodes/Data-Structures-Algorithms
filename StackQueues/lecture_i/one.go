@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type Stack struct {
 	top  int
 	data []int
@@ -11,35 +9,33 @@ func NewStack() *Stack {
 	return &Stack{top: -1, data: make([]int, 10)}
 }
 
-func (stk *Stack) Push(val int) error {
+func (stk *Stack) Push(val int) {
 	stk.top++
 	if stk.top >= cap(stk.data) {
 		stk.top--
-		return fmt.Errorf("stack overflow")
 	}
 	stk.data[stk.top] = val
-	return nil
 }
 
-func (stk *Stack) Top() (int, error) {
+func (stk *Stack) Top() int {
 	if stk.top < 0 {
-		return -1, fmt.Errorf("stack underflow")
+		return -1
 	}
-	return stk.data[stk.top], nil
+	return stk.data[stk.top]
 }
 
-func (stk *Stack) Pop() (int, error) {
+func (stk *Stack) Pop() int {
 	stk.top--
 	if stk.top < 0 {
 		stk.top++
-		return -1, fmt.Errorf("stack underflow")
+		return -1
 	}
-	return stk.data[stk.top], nil
+	return stk.data[stk.top]
 }
 
-func (stk *Stack) Size() (int, error) {
+func (stk *Stack) Size() int {
 	if stk.top < 0 {
-		return -1, fmt.Errorf("stack underflow")
+		return -1
 	}
-	return len(stk.data), nil
+	return len(stk.data)
 }
