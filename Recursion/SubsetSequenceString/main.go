@@ -9,4 +9,7 @@ func main() {
 	digits := []int{9, 0, 3, 5, 7}
 	subs := subsets(digits)
 	fmt.Println(subs)
+
+	parenCount := generateParenthesis(3)
+	fmt.Println(parenCount)
 }
