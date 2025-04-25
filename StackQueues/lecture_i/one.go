@@ -1,41 +1,36 @@
 package main
 
-type Stack struct {
-	top  int
-	data []int
+type MinStack struct {
+	stack    []int
+	minStack []int
 }
 
-func NewStack() *Stack {
-	return &Stack{top: -1, data: make([]int, 10)}
-}
-
-func (stk *Stack) Push(val int) {
-	stk.top++
-	if stk.top >= cap(stk.data) {
-		stk.top--
+func Constructor() *MinStack {
+	return &MinStack{
+		stack:    []int{},
+		minStack: []int{},
 	}
-	stk.data[stk.top] = val
 }
 
-func (stk *Stack) Top() int {
-	if stk.top < 0 {
-		return -1
+func (ms *MinStack) Push(val int) {
+	ms.stack = append(ms.stack, val)
+
+	if len(ms.minStack) == 0 || val <= ms.minStack[len(ms.minStack)-1] {
+		ms.minStack = append(ms.minStack, val)
 	}
-	return stk.data[stk.top]
 }
 
-func (stk *Stack) Pop() int {
-	stk.top--
-	if stk.top < 0 {
-		stk.top++
-		return -1
+func (ms *MinStack) Pop() {
+	if ms.stack[len(ms.stack)-1] == ms.minStack[len(ms.minStack)-1] {
+		ms.minStack = ms.minStack[:len(ms.minStack)-1]
 	}
-	return stk.data[stk.top]
+	ms.stack = ms.stack[:len(ms.stack)-1]
 }
 
-func (stk *Stack) Size() int {
-	if stk.top < 0 {
-		return -1
-	}
-	return len(stk.data)
+func (ms *MinStack) Top() int {
+	return ms.stack[len(ms.stack)-1]
+}
+
+func (ms *MinStack) GetMin() int {
+	return ms.minStack[len(ms.minStack)-1]
 }
