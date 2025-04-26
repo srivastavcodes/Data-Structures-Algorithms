@@ -20,7 +20,7 @@ func nextGreaterElement(nums1 []int, nums2 []int) []int {
 	return nge
 }
 
-func nextGreaterElement2(nums1 []int, nums2 []int) []int {
+func nextGreaterElementOptimal(nums1 []int, nums2 []int) []int {
 	record := make(map[int]int)
 	var stack []int
 
