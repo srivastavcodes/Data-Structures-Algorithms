@@ -11,14 +11,16 @@ type TreeNode struct {
 }
 
 func (tn *TreeNode) insert(value int) {
+	if value == tn.Value {
+		return
+	}
 	if value < tn.Value {
 		if tn.Left == nil {
 			tn.Left = &TreeNode{Value: value}
 		} else {
 			tn.Left.insert(value)
 		}
-	}
-	if value > tn.Value {
+	} else {
 		if tn.Right == nil {
 			tn.Right = &TreeNode{Value: value}
 		} else {
@@ -27,32 +29,59 @@ func (tn *TreeNode) insert(value int) {
 	}
 }
 
-func InorderTraversal(node *TreeNode, indent string) {
+func Traversal(node *TreeNode, indent string) {
 	if node == nil {
 		return
 	}
-	InorderTraversal(node.Right, indent+"\t")
+	Traversal(node.Right, indent+"\t")
 	fmt.Print(indent, node.Value, "\n")
-	InorderTraversal(node.Left, indent+"\t")
+	Traversal(node.Left, indent+"\t")
+}
+
+func PreOrderTraversal(node *TreeNode) {
+	if node == nil {
+		return
+	}
+	fmt.Print(node.Value, " ")
+	PreOrderTraversal(node.Left)
+	PreOrderTraversal(node.Right)
+}
+
+func InOrderTraversal(node *TreeNode) {
+	if node == nil {
+		return
+	}
+	InOrderTraversal(node.Left)
+	fmt.Print(node.Value, " ")
+	InOrderTraversal(node.Right)
+}
+
+func PostOrderTraversal(node *TreeNode) {
+	if node == nil {
+		return
+	}
+	PostOrderTraversal(node.Left)
+	PostOrderTraversal(node.Right)
+	fmt.Print(node.Value, " ")
 }
 
 func prettyDisplay() {
-	InorderTraversal(root, "")
+	Traversal(root, "")
+	fmt.Println()
+	PreOrderTraversal(root)
+	fmt.Println()
+	InOrderTraversal(root)
+	fmt.Println()
+	PostOrderTraversal(root)
 }
 
 func main() {
 	root = &TreeNode{Value: 10}
 	root.insert(5)
+	root.insert(5)
 	root.insert(15)
 	root.insert(3)
 	root.insert(7)
-	root.insert(12)
-	root.insert(18)
-	root.insert(9)
-	root.insert(22)
-	root.insert(32)
-	root.insert(2)
-	root.insert(11)
 
 	prettyDisplay()
 }
