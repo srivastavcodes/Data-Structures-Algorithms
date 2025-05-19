@@ -1,21 +1,26 @@
 package main
 
-func levelOrder(root *TreeNode) [][]int {
+func zigzagLevelOrder(root *TreeNode) [][]int {
 	result := make([][]int, 0)
-	queue := []*TreeNode{root}
-
 	if root == nil {
 		return result
 	}
+	queue := []*TreeNode{root}
+	leftToRight := true
+
 	for len(queue) > 0 {
 		levelSize := len(queue)
-		levelVals := make([]int, 0, levelSize)
+		levelVals := make([]int, levelSize)
 		for i := 0; i < levelSize; i++ {
+
 			node := queue[0]
 			queue = queue[1:]
 
-			levelVals = append(levelVals, node.Val)
-
+			if !leftToRight {
+				levelVals[levelSize-1-i] = node.Val
+			} else {
+				levelVals[i] = node.Val
+			}
 			if node.Left != nil {
 				queue = append(queue, node.Left)
 			}
@@ -23,6 +28,7 @@ func levelOrder(root *TreeNode) [][]int {
 				queue = append(queue, node.Right)
 			}
 		}
+		leftToRight = !leftToRight
 		result = append(result, levelVals)
 	}
 	return result

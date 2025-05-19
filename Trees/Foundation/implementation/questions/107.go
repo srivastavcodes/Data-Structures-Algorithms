@@ -1,21 +1,19 @@
 package main
 
-func averageOfLevels(root *TreeNode) []float64 {
-	result := make([]float64, 0)
-	queue := []*TreeNode{root}
-
+func levelOrderBottom(root *TreeNode) [][]int {
+	result := make([][]int, 0)
 	if root == nil {
 		return result
 	}
+	queue := []*TreeNode{root}
 	for len(queue) > 0 {
 		levelSize := len(queue)
-		var average float64
+		levelVals := make([]int, 0, levelSize)
 		for i := 0; i < levelSize; i++ {
 			node := queue[0]
 			queue = queue[1:]
 
-			average += float64(node.Val)
-
+			levelVals = append(levelVals, node.Val)
 			if node.Left != nil {
 				queue = append(queue, node.Left)
 			}
@@ -23,8 +21,7 @@ func averageOfLevels(root *TreeNode) []float64 {
 				queue = append(queue, node.Right)
 			}
 		}
-		average = average / float64(levelSize)
-		result = append(result, average)
+		result = append([][]int{levelVals}, result...)
 	}
 	return result
 }

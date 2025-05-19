@@ -95,15 +95,20 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{3, 4, 8, 12, 14, 7, 11, nil, nil, 36, 9, nil, nil, 2, nil, nil, nil, nil, nil, nil, 44}
+	values := []interface{}{3, 9, 20, 19, nil, 15, 7, 2, 55, 24, 28, 11, 13}
 	root := BuildTree(values)
 
 	root.PrettyDisplay()
 
-	result := LevelOrder(root)
-	average := AverageOfLevels(root)
-	successor := LevelOrderSuccessor(14, root)
-	fmt.Println(result)
-	fmt.Println(average)
-	fmt.Println(successor.Val)
+	result := levelOrder(root)
+	fmt.Printf("level order:: \t%d\n", result)
+
+	zigzag := zigzagLevelOrder(root)
+	fmt.Printf("zigzag:: \t%d\n", zigzag)
+
+	bottom := levelOrderBottom(root)
+	fmt.Printf("bottom up:: \t%d\n", bottom)
+
+	rightView := rightSideView(root)
+	fmt.Printf("right view:: \t%d\n", rightView)
 }
