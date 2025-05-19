@@ -8,6 +8,8 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// todo -> sorted array to binary tree, do it!
+
 func BuildTree(values []interface{}) *TreeNode {
 	if len(values) == 0 || values[0] == nil {
 		return nil
@@ -95,7 +97,7 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{3, 9, 20, 19, nil, 15, 7, 2, 55, 24, 28, 11, 13}
+	values := []interface{}{3, 9, 11, 24, 18, 19, 4}
 	root := BuildTree(values)
 
 	root.PrettyDisplay()
@@ -111,4 +113,13 @@ func main() {
 
 	rightView := rightSideView(root)
 	fmt.Printf("right view:: \t%d\n", rightView)
+
+	symmetric := isSymmetric(root)
+	fmt.Printf("symmetric:\t%t\n", symmetric)
+
+	diameter := diameterOfBinaryTree(root)
+	fmt.Printf("diameter:\t%d\n", diameter)
+
+	inverted := invertTree(root)
+	inverted.PrettyDisplay()
 }
