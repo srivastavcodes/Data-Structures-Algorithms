@@ -1,7 +1,6 @@
 package main
 
 import (
-	"Foundation/implementation/questions"
 	"fmt"
 )
 
@@ -68,26 +67,15 @@ func PostOrderTraversal(node *TreeNode) {
 
 func (tn *TreeNode) prettyDisplay() {
 	Traversal(tn, "")
-	fmt.Println()
-	PreOrderTraversal(tn)
-	fmt.Println()
-	InOrderTraversal(tn)
-	fmt.Println()
-	PostOrderTraversal(tn)
 }
 
 func main() {
-	root := &questions.TreeNode{Val: 5}
-	root.Insert(4)
-	root.Insert(11)
-	root.Insert(3)
-	root.Insert(6)
-	root.Insert(7)
+	root := &TreeNode{Value: 5}
+	root.insert(4)
+	root.insert(11)
+	root.insert(3)
+	root.insert(6)
+	root.insert(7)
 
-	root.PrettyDisplay()
-
-	result := questions.LevelOrder(root)
-	average := questions.AverageOfLevels(root)
-	fmt.Println(result)
-	fmt.Println(average)
+	root.prettyDisplay()
 }

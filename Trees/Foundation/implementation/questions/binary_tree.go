@@ -1,4 +1,4 @@
-package questions
+package main
 
 import "fmt"
 
@@ -6,6 +6,33 @@ type TreeNode struct {
 	Left  *TreeNode
 	Val   int
 	Right *TreeNode
+}
+
+func BuildTree(values []interface{}) *TreeNode {
+	if len(values) == 0 || values[0] == nil {
+		return nil
+	}
+
+	root := &TreeNode{Val: values[0].(int)}
+	queue := []*TreeNode{root}
+	i := 1
+
+	for len(queue) > 0 && i < len(values) {
+		node := queue[0]
+		queue = queue[1:]
+
+		if i < len(values) && values[i] != nil {
+			node.Left = &TreeNode{Val: values[i].(int)}
+			queue = append(queue, node.Left)
+		}
+		i++
+		if i < len(values) && values[i] != nil {
+			node.Right = &TreeNode{Val: values[i].(int)}
+			queue = append(queue, node.Right)
+		}
+		i++
+	}
+	return root
 }
 
 func (tn *TreeNode) Insert(value int) {
@@ -65,10 +92,18 @@ func PostOrderTraversal(node *TreeNode) {
 
 func (tn *TreeNode) PrettyDisplay() {
 	Traversal(tn, "")
-	fmt.Println()
-	PreOrderTraversal(tn)
-	fmt.Println()
-	InOrderTraversal(tn)
-	fmt.Println()
-	PostOrderTraversal(tn)
+}
+
+func main() {
+	values := []interface{}{3, 4, 8, 12, 14, 7, 11, nil, nil, 36, 9, nil, nil, 2, nil, nil, nil, nil, nil, nil, 44}
+	root := BuildTree(values)
+
+	root.PrettyDisplay()
+
+	result := LevelOrder(root)
+	average := AverageOfLevels(root)
+	successor := LevelOrderSuccessor(14, root)
+	fmt.Println(result)
+	fmt.Println(average)
+	fmt.Println(successor.Val)
 }

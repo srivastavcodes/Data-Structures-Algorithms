@@ -1,4 +1,4 @@
-package questions
+package main
 
 func AverageOfLevels(root *TreeNode) []float64 {
 	result := make([]float64, 0)
@@ -10,7 +10,6 @@ func AverageOfLevels(root *TreeNode) []float64 {
 	for len(queue) > 0 {
 		levelSize := len(queue)
 		var average float64
-
 		for i := 0; i < levelSize; i++ {
 			node := queue[0]
 			queue = queue[1:]
