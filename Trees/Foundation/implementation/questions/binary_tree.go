@@ -1,31 +1,28 @@
-package main
+package questions
 
-import (
-	"Foundation/implementation/questions"
-	"fmt"
-)
+import "fmt"
 
 type TreeNode struct {
 	Left  *TreeNode
-	Value int
+	Val   int
 	Right *TreeNode
 }
 
-func (tn *TreeNode) insert(value int) {
-	if value == tn.Value {
+func (tn *TreeNode) Insert(value int) {
+	if value == tn.Val {
 		return
 	}
-	if value < tn.Value {
+	if value < tn.Val {
 		if tn.Left == nil {
-			tn.Left = &TreeNode{Value: value}
+			tn.Left = &TreeNode{Val: value}
 		} else {
-			tn.Left.insert(value)
+			tn.Left.Insert(value)
 		}
 	} else {
 		if tn.Right == nil {
-			tn.Right = &TreeNode{Value: value}
+			tn.Right = &TreeNode{Val: value}
 		} else {
-			tn.Right.insert(value)
+			tn.Right.Insert(value)
 		}
 	}
 }
@@ -35,7 +32,7 @@ func Traversal(node *TreeNode, indent string) {
 		return
 	}
 	Traversal(node.Right, indent+"\t")
-	fmt.Print(indent, node.Value, "\n")
+	fmt.Print(indent, node.Val, "\n")
 	Traversal(node.Left, indent+"\t")
 }
 
@@ -43,7 +40,7 @@ func PreOrderTraversal(node *TreeNode) {
 	if node == nil {
 		return
 	}
-	fmt.Print(node.Value, " ")
+	fmt.Print(node.Val, " ")
 	PreOrderTraversal(node.Left)
 	PreOrderTraversal(node.Right)
 }
@@ -53,7 +50,7 @@ func InOrderTraversal(node *TreeNode) {
 		return
 	}
 	InOrderTraversal(node.Left)
-	fmt.Print(node.Value, " ")
+	fmt.Print(node.Val, " ")
 	InOrderTraversal(node.Right)
 }
 
@@ -63,10 +60,10 @@ func PostOrderTraversal(node *TreeNode) {
 	}
 	PostOrderTraversal(node.Left)
 	PostOrderTraversal(node.Right)
-	fmt.Print(node.Value, " ")
+	fmt.Print(node.Val, " ")
 }
 
-func (tn *TreeNode) prettyDisplay() {
+func (tn *TreeNode) PrettyDisplay() {
 	Traversal(tn, "")
 	fmt.Println()
 	PreOrderTraversal(tn)
@@ -74,18 +71,4 @@ func (tn *TreeNode) prettyDisplay() {
 	InOrderTraversal(tn)
 	fmt.Println()
 	PostOrderTraversal(tn)
-}
-
-func main() {
-	root := &questions.TreeNode{Val: 5}
-	root.Insert(3)
-	root.Insert(2)
-	root.Insert(4)
-	root.Insert(7)
-	root.Insert(6)
-
-	root.PrettyDisplay()
-
-	result := questions.LevelOrder(root)
-	fmt.Println(result)
 }
