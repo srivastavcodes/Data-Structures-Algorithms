@@ -78,14 +78,16 @@ func (tn *TreeNode) prettyDisplay() {
 
 func main() {
 	root := &questions.TreeNode{Val: 5}
-	root.Insert(3)
-	root.Insert(2)
 	root.Insert(4)
-	root.Insert(7)
+	root.Insert(11)
+	root.Insert(3)
 	root.Insert(6)
+	root.Insert(7)
 
 	root.PrettyDisplay()
 
 	result := questions.LevelOrder(root)
+	average := questions.AverageOfLevels(root)
 	fmt.Println(result)
+	fmt.Println(average)
 }
