@@ -65,13 +65,22 @@ func Traversal(node *TreeNode, indent string) {
 	Traversal(node.Left, indent+"\t")
 }
 
-func PreOrderTraversal(node *TreeNode) {
+func PreOrderTraversal(node *TreeNode) []int {
+	if node == nil {
+		return []int{}
+	}
+	var result []int
+	traverse(node, &result)
+	return result
+}
+
+func traverse(node *TreeNode, result *[]int) {
 	if node == nil {
 		return
 	}
-	fmt.Print(node.Val, " ")
-	PreOrderTraversal(node.Left)
-	PreOrderTraversal(node.Right)
+	*result = append(*result, node.Val)
+	traverse(node.Left, result)
+	traverse(node.Right, result)
 }
 
 func InOrderTraversal(node *TreeNode) {
@@ -122,4 +131,7 @@ func main() {
 
 	inverted := invertTree(root)
 	inverted.PrettyDisplay()
+
+	preorder := PreOrderTraversal(root)
+	fmt.Printf("preorder:\t%d\n", preorder)
 }
