@@ -56,6 +56,18 @@ func (tn *TreeNode) Insert(value int) {
 	}
 }
 
+func CreateBST(values []int) *TreeNode {
+	if len(values) == 0 {
+		return nil
+	}
+	root := &TreeNode{Val: values[0]}
+
+	for i := 1; i < len(values); i++ {
+		root.Insert(values[i])
+	}
+	return root
+}
+
 func Traversal(node *TreeNode, indent string) {
 	if node == nil {
 		return
@@ -106,32 +118,16 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{3, 9, 11, 24, 18, 19, 4}
+	values := []interface{}{9, 5, 2, 7, 12, 13, 6, 11, 10, 17}
+	// vals := []int{9, 5, 2, 6, 11, 10, 17}
+
 	root := BuildTree(values)
+	// bst := CreateBST(vals)
 
 	root.PrettyDisplay()
+	// fmt.Println()
+	// bst.PrettyDisplay()
 
-	result := levelOrder(root)
-	fmt.Printf("level order:: \t%d\n", result)
-
-	zigzag := zigzagLevelOrder(root)
-	fmt.Printf("zigzag:: \t%d\n", zigzag)
-
-	bottom := levelOrderBottom(root)
-	fmt.Printf("bottom up:: \t%d\n", bottom)
-
-	rightView := rightSideView(root)
-	fmt.Printf("right view:: \t%d\n", rightView)
-
-	symmetric := isSymmetric(root)
-	fmt.Printf("symmetric:\t%t\n", symmetric)
-
-	diameter := diameterOfBinaryTree(root)
-	fmt.Printf("diameter:\t%d\n", diameter)
-
-	inverted := invertTree(root)
-	inverted.PrettyDisplay()
-
-	preorder := PreOrderTraversal(root)
-	fmt.Printf("preorder:\t%d\n", preorder)
+	lca := lowestCommonAncestor(root, root.Left.Left.Left, root.Left.Right.Left)
+	fmt.Println(lca.Val)
 }
