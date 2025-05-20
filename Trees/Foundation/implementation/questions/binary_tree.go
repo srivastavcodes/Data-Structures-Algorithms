@@ -118,7 +118,7 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{9, 5, 2, 7, 12, 13}
+	values := []interface{}{1, 2, 3, 4, 5, nil, 6}
 
 	root := BuildTree(values)
 	root.PrettyDisplay()
@@ -129,6 +129,16 @@ func main() {
 	// bst := CreateBST(vals)
 	// bst.PrettyDisplay()
 
-	maxPath := maxPathSum(root)
-	fmt.Println(maxPath)
+	paths := [][]int{
+		{1, 2, 4}, // Valid path
+		{1, 3, 6}, // Valid path
+		{1, 2, 5}, // Valid path
+		{1, 3, 5}, // Invalid path
+		{1, 2, 3}, // Invalid path
+	}
+
+	for _, path := range paths {
+		exists := pathExists(root, path)
+		fmt.Printf("Path %v exists: %t\n", path, exists)
+	}
 }
