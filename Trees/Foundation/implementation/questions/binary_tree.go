@@ -119,20 +119,16 @@ func (tn *TreeNode) PrettyDisplay() {
 
 func main() {
 	values := []interface{}{9, 5, 2, 7, 12, 13}
-	vals := []int{9, 5, 2, 6, 11, 17}
 
 	root := BuildTree(values)
-	bst := CreateBST(vals)
-
 	root.PrettyDisplay()
+
 	fmt.Println()
-	bst.PrettyDisplay()
 
-	ser := Constructor()
-	deser := Constructor()
+	// vals := []int{9, 5, 2, 6, 11, 17}
+	// bst := CreateBST(vals)
+	// bst.PrettyDisplay()
 
-	data := ser.serialize(root)
-	ans := deser.deserialize(data)
-
-	ans.PrettyDisplay()
+	maxPath := maxPathSum(root)
+	fmt.Println(maxPath)
 }
