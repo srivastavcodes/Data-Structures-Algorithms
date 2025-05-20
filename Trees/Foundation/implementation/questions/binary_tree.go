@@ -70,17 +70,17 @@ func PreOrderTraversal(node *TreeNode) []int {
 		return []int{}
 	}
 	var result []int
-	traverse(node, &result)
+	preorderTraverse(node, &result)
 	return result
 }
 
-func traverse(node *TreeNode, result *[]int) {
+func preorderTraverse(node *TreeNode, result *[]int) {
 	if node == nil {
 		return
 	}
 	*result = append(*result, node.Val)
-	traverse(node.Left, result)
-	traverse(node.Right, result)
+	preorderTraverse(node.Left, result)
+	preorderTraverse(node.Right, result)
 }
 
 func InOrderTraversal(node *TreeNode) {
