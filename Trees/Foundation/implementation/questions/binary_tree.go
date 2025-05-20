@@ -118,16 +118,21 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{9, 5, 2, 7, 12, 13, 6, 11, 10, 17}
-	// vals := []int{9, 5, 2, 6, 11, 10, 17}
+	values := []interface{}{9, 5, 2, 7, 12, 13}
+	vals := []int{9, 5, 2, 6, 11, 17}
 
 	root := BuildTree(values)
-	// bst := CreateBST(vals)
+	bst := CreateBST(vals)
 
 	root.PrettyDisplay()
-	// fmt.Println()
-	// bst.PrettyDisplay()
+	fmt.Println()
+	bst.PrettyDisplay()
 
-	lca := lowestCommonAncestor(root, root.Left.Left.Left, root.Left.Right.Left)
-	fmt.Println(lca.Val)
+	ser := Constructor()
+	deser := Constructor()
+
+	data := ser.serialize(root)
+	ans := deser.deserialize(data)
+
+	ans.PrettyDisplay()
 }
