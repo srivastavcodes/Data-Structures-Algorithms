@@ -118,9 +118,11 @@ func (tn *TreeNode) PrettyDisplay() {
 }
 
 func main() {
-	values := []interface{}{1, 2, 3, 4, 5, nil, 6}
+	values := []interface{}{3, 9, 20, nil, nil, 15, 7}
+	values2 := []interface{}{3, nil, 20, nil, nil, 15, 7}
 
 	root := BuildTree(values)
+	root2 := BuildTree(values2)
 	root.PrettyDisplay()
 
 	fmt.Println()
@@ -129,16 +131,9 @@ func main() {
 	// bst := CreateBST(vals)
 	// bst.PrettyDisplay()
 
-	paths := [][]int{
-		{1, 2, 4}, // Valid path
-		{1, 3, 6}, // Valid path
-		{1, 2, 5}, // Valid path
-		{1, 3, 5}, // Invalid path
-		{1, 2, 3}, // Invalid path
-	}
+	balanced := isBalanced(root)
+	fmt.Println(balanced)
 
-	for _, path := range paths {
-		exists := pathExists(root, path)
-		fmt.Printf("Path %v exists: %t\n", path, exists)
-	}
+	isSame := isSameTree(root, root2)
+	fmt.Println(isSame)
 }
