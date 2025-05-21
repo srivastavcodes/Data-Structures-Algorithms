@@ -68,5 +68,10 @@ func main() {
 	heap.printHeap()
 
 	vals := []int{-1, 54, 53, 55, 52, 50}
-	fmt.Printf("vals :: \t%d", vals)
+	heapify(vals, len(vals), 3, "max")
+	fmt.Printf("vals :: \t%d\n", vals)
+
+	vals2 := []int{54, 53, 55, 52, 50}
+	heapify(vals2, len(vals), 5, "min")
+	fmt.Printf("vals :: \t%d\n", vals2)
 }

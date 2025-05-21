@@ -13,19 +13,20 @@ func heapify(vals []int, size, idx int, str string) {
 		}
 	} else if str == "min" {
 		for i := len(vals)/2 - 1; i >= 0; i-- {
-			heapifyMax(vals, len(vals), i)
+			heapifyMin(vals, len(vals), i)
 		}
 	}
 }
 
-// zero-based indexing
+// one-based indexing
 func heapifyMax(vals []int, size int, idx int) {
 	largest := idx
 	left, right := 2*idx, 2*idx+1
 
 	if left < size && vals[largest] < vals[left] {
 		largest = left
-	} else if right < size && vals[largest] < vals[right] {
+	}
+	if right < size && vals[largest] < vals[right] {
 		largest = right
 	}
 	if largest != idx {
@@ -34,14 +35,15 @@ func heapifyMax(vals []int, size int, idx int) {
 	}
 }
 
-// one-based indexing
+// zero-based indexing
 func heapifyMin(vals []int, size int, idx int) {
 	smallest := idx
 	left, right := 2*idx+1, 2*idx+2
 
 	if left < size && vals[smallest] > vals[left] {
 		smallest = left
-	} else if right < size && vals[smallest] > vals[right] {
+	}
+	if right < size && vals[smallest] > vals[right] {
 		smallest = right
 	}
 	if smallest != idx {
