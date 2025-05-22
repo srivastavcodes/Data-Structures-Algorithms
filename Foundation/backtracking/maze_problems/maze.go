@@ -5,14 +5,17 @@ import "fmt"
 func main() {
 	fmt.Printf("Maze problems\n")
 
-	totalPaths := countPaths(3, 3)
-	fmt.Printf("No. of ways:: %d\n", totalPaths)
+	chess := make([][]bool, 4)
+	for i := range chess {
+		chess[i] = make([]bool, 4)
+	}
+	res := buildAndSolveNQueens(chess, 0)
+	fmt.Println(res)
+	fmt.Println()
 
-	pathValues := returnPaths("", 3, 3)
-	fmt.Printf("Paths to last cube:: %s\n", pathValues)
-
-	withDiagonal := pathsWithDiagonal("", 3, 3)
-	fmt.Printf("Paths with diagonal:: %s\n", withDiagonal)
+	queensPlaced := solveNQueens(1)
+	fmt.Println(queensPlaced)
+	fmt.Println()
 
 	board := [][]bool{
 		{true, true, true},
