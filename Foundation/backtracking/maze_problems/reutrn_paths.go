@@ -62,59 +62,78 @@ func pathsWithRestriction(pr string, board [][]bool, rows, cols int) []string {
 
 func allPathsWithRestriction(pr string, board [][]bool, rows, cols int) []string {
 	paths := make([]string, 0)
+
+	// Base case: reached destination
 	if rows == len(board)-1 && cols == len(board[0])-1 {
 		return []string{pr}
 	}
-
+	// Skip if cell is blocked
 	if !board[rows][cols] {
 		return paths
 	}
-	// block already considered for this path
+	// Mark current cell as visited
 	board[rows][cols] = false
 
-	// down-right diag
-	if rows < len(board)-1 && cols < len(board[0])-1 {
-		downright := allPathsWithRestriction(pr+"\u2198", board, rows+1, cols+1)
-		paths = append(paths, downright...)
-	}
-	// down-left diag
-	if rows < len(board)-1 && cols > 0 {
-		downleft := allPathsWithRestriction(pr+"\u2199", board, rows+1, cols-1)
-		paths = append(paths, downleft...)
-	}
-	// up-left diag
-	if rows > 0 && cols > 0 {
-		upleft := allPathsWithRestriction(pr+"\u2196", board, rows-1, cols-1)
-		paths = append(paths, upleft...)
-	}
-	// up-right diag
-	if rows > 0 && cols < len(board[0])-1 {
-		upright := allPathsWithRestriction(pr+"\u2197", board, rows-1, cols+1)
-		paths = append(paths, upright...)
-	}
+	paths = append(paths, handleCardinalPaths(pr, board, rows, cols)...)
 
-	// left
-	if cols > 0 {
-		leftPaths := allPathsWithRestriction(pr+"\u2190", board, rows, cols-1)
-		paths = append(paths, leftPaths...)
+	paths = append(paths, handleDiagonalPaths(pr, board, rows, cols)...)
+
+	// Backtracking: mark cell as unvisited again
+	board[rows][cols] = true
+
+	return paths
+}
+
+// Handle cardinal directions: up, down, left, right
+func handleCardinalPaths(pr string, board [][]bool, rows, cols int) []string {
+	paths := make([]string, 0)
+
+	// Down movement
+	if rows < len(board)-1 {
+		downPaths := allPathsWithRestriction(pr+"\u2193", board, rows+1, cols)
+		paths = append(paths, downPaths...)
 	}
-	// right
+	// Right movement
 	if cols < len(board[0])-1 {
 		rightPaths := allPathsWithRestriction(pr+"\u2192", board, rows, cols+1)
 		paths = append(paths, rightPaths...)
 	}
-	// up
+	// Up movement
 	if rows > 0 {
 		upPaths := allPathsWithRestriction(pr+"\u2191", board, rows-1, cols)
 		paths = append(paths, upPaths...)
 	}
-	// down
-	if rows < len(board)-1 {
-		downPath := allPathsWithRestriction(pr+"\u2193", board, rows+1, cols)
-		paths = append(paths, downPath...)
+	// Left movement
+	if cols > 0 {
+		leftPaths := allPathsWithRestriction(pr+"\u2190", board, rows, cols-1)
+		paths = append(paths, leftPaths...)
 	}
+	return paths
+}
 
-	// backtracking to the original state
-	board[rows][cols] = true
+// Handle diagonal directions: up-left, upright, down-left, down-right
+func handleDiagonalPaths(pr string, board [][]bool, rows, cols int) []string {
+	paths := make([]string, 0)
+
+	// Down-right diagonal
+	if rows < len(board)-1 && cols < len(board[0])-1 {
+		downRightPaths := allPathsWithRestriction(pr+"\u2198", board, rows+1, cols+1)
+		paths = append(paths, downRightPaths...)
+	}
+	// Up-left diagonal
+	if rows > 0 && cols > 0 {
+		upLeftPaths := allPathsWithRestriction(pr+"\u2196", board, rows-1, cols-1)
+		paths = append(paths, upLeftPaths...)
+	}
+	// Down-left diagonal
+	if rows < len(board)-1 && cols > 0 {
+		downLeftPaths := allPathsWithRestriction(pr+"\u2199", board, rows+1, cols-1)
+		paths = append(paths, downLeftPaths...)
+	}
+	// Up-right diagonal
+	if rows > 0 && cols < len(board[0])-1 {
+		upRightPaths := allPathsWithRestriction(pr+"\u2197", board, rows-1, cols+1)
+		paths = append(paths, upRightPaths...)
+	}
 	return paths
 }
