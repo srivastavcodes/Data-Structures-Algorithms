@@ -5,15 +5,7 @@ import "fmt"
 func main() {
 	fmt.Printf("Maze problems\n")
 
-	chess := make([][]bool, 4)
-	for i := range chess {
-		chess[i] = make([]bool, 4)
-	}
-	res := buildAndSolveNQueens(chess, 0)
-	fmt.Println(res)
-	fmt.Println()
-
-	queensPlaced := solveNQueens(1)
+	queensPlaced := solveNQueens(5)
 	fmt.Println(queensPlaced)
 	fmt.Println()
 

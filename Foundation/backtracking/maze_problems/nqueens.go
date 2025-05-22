@@ -13,6 +13,7 @@ func solveNQueens(queens int) [][]string {
 func buildAndSolveNQueens(board [][]bool, rows int) [][]string {
 	if rows == len(board) {
 		result := convertBoardToStrings(board)
+		display(board)
 		return [][]string{result}
 	}
 	strs := make([][]string, 0)
