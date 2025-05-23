@@ -1,31 +1,31 @@
 package main
 
-type TrieNode struct {
-	value    byte
-	isEnd    bool
-	children [26]*TrieNode
+type Trie struct {
+	Value    byte
+	IsEnd    bool
+	Children [26]*Trie
 }
 
-func NewTrieNode(char byte) TrieNode {
-	return TrieNode{value: char}
+func NewTrieNode(char byte) Trie {
+	return Trie{Value: char}
 }
 
-func (root *TrieNode) InsertWord(word string) {
+func (root *Trie) InsertWord(word string) {
 	if len(word) == 0 {
-		root.isEnd = true
+		root.IsEnd = true
 		return
 	}
 	idx := word[0] - 'A'
 
-	if root.children[idx] == nil {
-		root.children[idx] = &TrieNode{value: word[0]}
+	if root.Children[idx] == nil {
+		root.Children[idx] = &Trie{Value: word[0]}
 	}
-	root.children[idx].InsertWord(word[1:])
+	root.Children[idx].InsertWord(word[1:])
 }
 
-func (root *TrieNode) SearchWord(word string) bool {
+func (root *Trie) SearchWord(word string) bool {
 	if len(word) == 0 {
-		return root.isEnd
+		return root.IsEnd
 	}
 	valid := 'A' <= word[0] && word[0] <= 'Z'
 
@@ -34,13 +34,13 @@ func (root *TrieNode) SearchWord(word string) bool {
 	}
 	idx := word[0] - 'A'
 
-	if root.children[idx] == nil {
+	if root.Children[idx] == nil {
 		return false
 	}
-	return root.children[idx].SearchWord(word[1:])
+	return root.Children[idx].SearchWord(word[1:])
 }
 
-func (root *TrieNode) SearchPrefix(word string) bool {
+func (root *Trie) SearchPrefix(word string) bool {
 	if len(word) == 0 {
 		return true
 	}
@@ -51,8 +51,8 @@ func (root *TrieNode) SearchPrefix(word string) bool {
 	}
 	idx := word[0] - 'A'
 
-	if root.children[idx] == nil {
+	if root.Children[idx] == nil {
 		return false
 	}
-	return root.children[idx].SearchPrefix(word[1:])
+	return root.Children[idx].SearchPrefix(word[1:])
 }

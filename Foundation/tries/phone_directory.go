@@ -1,6 +1,6 @@
 package main
 
-func (root *TrieNode) getSuggestions(query string) [][]string {
+func (root *Trie) getSuggestions(query string) [][]string {
 	output := make([][]string, 0)
 	prev, prefix := root, ""
 
@@ -8,7 +8,7 @@ func (root *TrieNode) getSuggestions(query string) [][]string {
 		lastChar := query[i]
 		prefix = prefix + string(lastChar)
 
-		curr := prev.children[lastChar-'A']
+		curr := prev.Children[lastChar-'A']
 		if curr == nil {
 			break
 		}
@@ -22,12 +22,12 @@ func (root *TrieNode) getSuggestions(query string) [][]string {
 	return output
 }
 
-func retrieveSuggestions(curr *TrieNode, record *[]string, prefix string) {
-	if curr.isEnd {
+func retrieveSuggestions(curr *Trie, record *[]string, prefix string) {
+	if curr.IsEnd {
 		*record = append(*record, prefix)
 	}
 	for char := 'A'; char <= 'Z'; char++ {
-		next := curr.children[char-'A']
+		next := curr.Children[char-'A']
 		if next != nil {
 			prefix2 := prefix + string(char)
 			retrieveSuggestions(next, record, prefix2)
