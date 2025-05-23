@@ -16,4 +16,9 @@ func main() {
 
 	subsetII := subsetsWithDup(digits)
 	fmt.Println(subsetII)
+
+	board := [][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}
+	word := "ABCCEDE"
+	search := exist(board, word)
+	fmt.Println(search)
 }
