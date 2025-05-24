@@ -12,9 +12,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// todo -> convert bst into min heap (love babbar)
+
 func main() {
-	ropeCost := ropeMinCost([]int64{4, 3, 2, 6})
-	fmt.Println(ropeCost)
+	input := []int64{4, 3, 2, 6}
+
+	ropeCost := ropeMinCost(input)
+	fmt.Println("rope cost::", ropeCost)
+
+	input2 := []int{1, 2, 3, 4, 5}
+
+	kthLargest := kthLargestSumSubarray(input2, 2)
+	fmt.Println("kthLargest sum::", kthLargest)
+
+	arrays1 := [][]int{
+		{1, 3, 15, 17},
+		{2, 4, 6, 8},
+		{0, 9, 10, 11},
+	}
+	result1 := mergeKSortedArrays(arrays1, 3)
+	fmt.Println("Test case 1 result:", result1)
 }
 
 func heapAndQueue() {
