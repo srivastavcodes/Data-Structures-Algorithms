@@ -7,6 +7,20 @@ import (
 )
 
 func main() {
+	// Test the kthSmallest function
+	arr := []int{7, 10, 4, 3, 20, 15}
+	k := 3
+	result := kthSmallest(arr, k)
+	fmt.Printf("The %dth smallest element is: %d\n", k, result)
+
+	// Test with another example
+	arr2 := []int{54, 53, 55, 52, 50}
+	k2 := 2
+	result2 := kthSmallest(arr2, k2)
+	fmt.Printf("The %dth smallest element is: %d\n", k2, result2)
+}
+
+func heapAndQueue() {
 	heap := Heap{vals: make([]int, 0, 10)}
 	heap.insert(54)
 	heap.insert(53)
@@ -37,4 +51,20 @@ func main() {
 	pq.Dequeue()
 
 	fmt.Println(pq.Values())
+
+	// Show values in priority order by dequeuing
+	fmt.Println("\nDequeueing from priority queue in order:")
+	pqOrdered := priorityqueue.NewWith(func(a, b interface{}) int {
+		return b.(int) - a.(int)
+	})
+
+	for _, val := range []int{54, 53, 55, 52, 50} {
+		pqOrdered.Enqueue(val)
+	}
+
+	for !pqOrdered.Empty() {
+		val, _ := pqOrdered.Dequeue()
+		fmt.Print(val, " ")
+	}
+	fmt.Println()
 }
