@@ -66,7 +66,7 @@ func heapAndQueue() {
 
 	fmt.Println(pq.Values())
 
-	// Show values in priority order by dequeuing
+	// Show value in priority order by dequeuing
 	fmt.Println("\nDequeueing from priority queue in order:")
 	pqOrdered := priorityqueue.NewWith(func(a, b interface{}) int {
 		return b.(int) - a.(int)
