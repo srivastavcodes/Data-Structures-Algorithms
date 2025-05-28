@@ -3,9 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	strs := "forxxorfxdofr"
-	pattern := "for"
+	strs := "cbaebabacd"
+	pattern := "abc"
 
-	count := countOccurrence(pattern, strs)
+	count := findAnagrams(strs, pattern)
 	fmt.Println(count)
+
+	nums := []int{1, 1, 1, 1, 1, 1, 1, 1, 1}
+	subarr := minSubArrayLen(11, nums)
+	fmt.Println(subarr)
 }
