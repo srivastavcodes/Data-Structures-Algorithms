@@ -3,9 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	strs := []int{1, 2, 3, 1, 2, 3}
-	pattern := 2
+	strs := "abciiidef"
+	k := 3
 
-	count := containsNearbyDuplicate(strs, pattern)
+	count := maxVowels(strs, k)
 	fmt.Println(count)
+
+	input := []int{1, 2, 3, 4, 5}
+	output := getAverages(input, k)
+	fmt.Println(output)
 }
