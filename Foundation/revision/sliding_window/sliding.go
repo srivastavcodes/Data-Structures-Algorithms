@@ -9,7 +9,7 @@ func main() {
 	count := maxVowels(strs, k)
 	fmt.Println(count)
 
-	input := []int{1, 2, 3, 4, 5}
-	output := getAverages(input, k)
+	input := []int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}
+	output := longestOnes(input, 3)
 	fmt.Println(output)
 }
